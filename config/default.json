@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://brad123:brad123@cluster0.6ykmnzt.mongodb.net/?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://atlasAdmin:atlasAdmin123@cluster0.qeg73cg.mongodb.net/?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
 }
