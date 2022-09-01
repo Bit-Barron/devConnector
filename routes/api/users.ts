@@ -20,13 +20,11 @@ router.post(
     }),
   ],
 
-  async (req, res) => {
+  async (req:any, res:any) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
-    res.send("User route");
 
     // See if user exist
 
@@ -69,17 +67,18 @@ router.post(
       jwt.sign(
         payload,
         config.get("jwtSecret"),
-        { expiresIn: "360000" },
-        (err, token) => {
+        { expiresIn: 360000 },
+        (err: any, token: any) => {
           if (err) throw err;
           res.json({ token });
         }
       );
-    } catch (err) {
+    } catch (err: any) {
       console.log(err.message);
       res.status(500).send("Server error");
     }
   }
 );
 
-module.exports = router;
+export default router;
+

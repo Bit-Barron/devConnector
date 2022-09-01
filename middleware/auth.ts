@@ -1,7 +1,7 @@
-const jwt = require("jsonwebtoken");
-const config = require("config");
+import jwt from "jsonwebtoken";
+import config from "config";
 
-module.exports = function (req, res, next) {
+export default function (req: any, res: any, next: any) {
   const token = req.header("x-auth-token");
 
   if (!token) {
@@ -10,6 +10,7 @@ module.exports = function (req, res, next) {
 
   try {
     const decoded = jwt.verify(token, config.get("jwtSecret"));
+    // @ts-ignore
     req.user = decoded.user;
     next();
   } catch (err) {

@@ -1,7 +1,8 @@
-const connectDB = require("./config/db");
 
-const bodyParser = require("body-parser");
-const express = require("express");
+import connectDB from "./config/db";
+
+import bodyParser from "body-parser";
+import express from "express";
 const app = express();
 
 // configure the app to use bodyParser()
