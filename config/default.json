@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://atlasAdmin:atlasAdmin123@cluster0.qeg73cg.mongodb.net/?retryWrites=true&w=majority",
-  "jwtSecret": "mysecrettoken"
+  "jwtSecret": "mysecrettoken",
+  "githubClienId": "cdb9c1bdfd2f97c2469e",
+  "githubSecret": "e35cd0830465d0e79fd9df5a04d8509a41f2b9f7"
 }

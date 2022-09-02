@@ -1,22 +1,22 @@
-import express from 'express';
-import { check, validationResult } from 'express-validator';
-import gravatar from 'gravatar';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import config from 'config';
+import express from "express";
+import { check, validationResult } from "express-validator";
+import gravatar from "gravatar";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import config from "config";
 
-import User from '../../models/User';
+import User from "../../models/User";
 
 const router = express.Router();
 
 router.post(
-  '/',
+  "/",
   [
-    check('name', 'Name is required').not().isEmpty(),
-    check('email', 'Please incluse a valid email').isEmail(),
+    check("name", "Name is required").not().isEmpty(),
+    check("email", "Please incluse a valid email").isEmail(),
     check(
-      'password',
-      'PLease enter a password with 6 or more characters'
+      "password",
+      "PLease enter a password with 6 or more characters"
     ).isLength({
       min: 6,
     }),
@@ -37,13 +37,13 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'User already exists' }] });
+          .json({ errors: [{ msg: "User already exists" }] });
       }
 
       const avatar = gravatar.url(email, {
-        s: '200',
-        r: 'pg',
-        d: 'mm',
+        s: "200",
+        r: "pg",
+        d: "mm",
       });
 
       user = new User({
@@ -68,7 +68,7 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        config.get("jwtSecret"),
         { expiresIn: 360000 },
         (err: any, token: any) => {
           if (err) throw err;
@@ -77,7 +77,7 @@ router.post(
       );
     } catch (err: any) {
       console.log(err.message);
-      res.status(500).send('Server error');
+      res.status(500).send("Server error");
     }
   }
 );

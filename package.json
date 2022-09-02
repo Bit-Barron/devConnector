@@ -28,6 +28,7 @@
     "@types/express": "^4.17.13",
     "@types/gravatar": "^1.8.3",
     "@types/jsonwebtoken": "^8.5.9",
+    "@types/request": "^2.48.8",
     "concurrently": "^7.3.0",
     "nodemon": "^2.0.19",
     "ts-node-dev": "^2.0.0",
