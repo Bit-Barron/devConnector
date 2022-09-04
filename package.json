@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node server",
-    "server": "ts-node-dev --respawn --transpile-only server.ts"
+    "server": "ts-node-dev --respawn --transpile-only server.ts",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server \" \"npm run client\""
+
+
   },
   "keywords": [],
   "author": "",
