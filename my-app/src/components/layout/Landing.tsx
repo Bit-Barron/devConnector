@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 const Landing = () => {
   return (
     <section className="landing">
-      <div className="dark-overlay">
+      <div className="dark-overlay w-full">
         <div className="landing-inner">
           <h1 className="x-large">Developer Connector</h1>
           <p className="lead">
@@ -9,12 +11,12 @@ const Landing = () => {
             other developers
           </p>
           <div className="buttons">
-            <a href="register.html" className="btn btn-primary">
+            <Link to="/register" className="btn btn-primary">
               Sign Up
-            </a>
-            <a href="login.html" className="btn btn-light">
+            </Link>
+            <Link to="/login" className="btn btn-light">
               Login
-            </a>
+            </Link>
           </div>
         </div>
       </div>
