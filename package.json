@@ -2,7 +2,7 @@
   "name": "udemy-prject",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
     "start": "node server",
     "server": "ts-node-dev --respawn --transpile-only server.ts",
