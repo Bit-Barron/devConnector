@@ -7,8 +7,15 @@ import users from './routes/api/users';
 import profile from './routes/api/profile';
 import posts from './routes/api/posts';
 import auth from './routes/api/auth';
+import cors from 'cors';
 
 const app = express();
+
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 
 // configure the app to use bodyParser()
 
