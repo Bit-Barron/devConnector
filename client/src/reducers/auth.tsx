@@ -1,5 +1,4 @@
 /* eslint-disable import/no-anonymous-default-export */
-import React from 'react';
 import { REGISTER_SUCCES, REGISTER_FAIL } from '../actions/types';
 
 const initialState = {
