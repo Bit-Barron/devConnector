@@ -1,17 +1,17 @@
 import { ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setAlert } from '../../actions/alert'; 
+import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 // @ts-ignore
 const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
-    name: 'don',
-    email: 'don@don.com',
-    password: 'dondon',
-    password2: 'dondon',
+    name: 'don12',
+    email: 'don@gmail.com',
+    password: '123123123',
+    password2: '123123123',
   });
 
   const { name, email, password, password2 } = formData;
