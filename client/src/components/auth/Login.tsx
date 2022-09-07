@@ -1,63 +1,76 @@
-import React from 'react';
-import { ChangeEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { login } from '../../actions/auth';
 
-const Login = ({ login }: any) => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+export const Login = ({ login, isAuthenticated }: any) => {
+  const [formData, setFormData] = useState({ email: '', password: '' });
 
   const { email, password } = formData;
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const onChange = (e: any) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async (e: { preventDefault: () => void }) => {
+  const onSubmit = async (e: any) => {
     e.preventDefault();
     login(email, password);
   };
 
+  //Redirect if logged in
+
+  if (isAuthenticated) {
+  }
+
   return (
-    <>
-      <h1 className="large text-primary">Sign In</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Sign Into Your Account
+    <Fragment>
+      <h1 className='large text-primary'>Login</h1>
+      <p className='lead'>
+        <i className='fas fa-user' /> Sign Into Your Account
       </p>
-      <form className="form" onSubmit={(e) => onSubmit(e)}>
-        <div className="form-group">
+      <form className='form' onSubmit={(e) => onSubmit(e)}>
+        <div className='form-group'>
           <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
+            type='email'
+            placeholder='Email Address'
+            name='email'
+            required
             value={email}
             onChange={(e) => onChange(e)}
           />
+          <small className='form-text'>
+            This site uses Gravatar so if you want a profile image, use Gravatar
+            email
+          </small>
         </div>
-        <div className="form-group">
+        <div className='form-group'>
           <input
-            type="password"
-            placeholder="Password"
-            name="password"
+            type='password'
+            placeholder='Password'
+            name='password'
+            minLength={6}
+            required
             value={password}
             onChange={(e) => onChange(e)}
           />
         </div>
 
-        <input type="submit" className="btn btn-primary" value="Login" />
+        <input type='submit' className='btn btn-primary' value='Login' />
       </form>
-      <p className="my-1">
-        Dont have an account? <Link to="/register">Sign up</Link>
+      <p className='my-1'>
+        Dont have an account?<Link to='/register'> Register</Link>
       </p>
-    </>
+    </Fragment>
   );
 };
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { login })(Login);
+const mapStateToProps = (state: any) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);
