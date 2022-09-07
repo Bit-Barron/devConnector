@@ -8,10 +8,10 @@ import PropTypes from 'prop-types';
 // @ts-ignore
 const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
-    name: 'don12',
-    email: 'don@gmail.com',
-    password: '123123123',
-    password2: '123123123',
+    name: '',
+    email: '',
+    password: '',
+    password2: '',
   });
 
   const { name, email, password, password2 } = formData;
