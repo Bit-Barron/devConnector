@@ -20,6 +20,8 @@ export const register =
     try {
       const res = await axios.post(`${url}api/users`, body, config);
 
+      console.log(res.data);
+
       dispatch({
         type: REGISTER_SUCCES,
         payload: res.data,
