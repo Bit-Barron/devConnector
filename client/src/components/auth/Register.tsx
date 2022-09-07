@@ -1,16 +1,17 @@
-import { ChangeEvent, useState } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { setAlert } from "../../actions/alert";
-import PropTypes from "prop-types";
+import { ChangeEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
 // @ts-ignore
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
-    name: "don",
-    email: "don@don.com",
-    password: "dondon",
-    password2: "dondon",
+    name: 'don',
+    email: 'don@don.com',
+    password: 'dondon',
+    password2: 'dondon',
   });
 
   const { name, email, password, password2 } = formData;
@@ -21,9 +22,9 @@ const Register = ({ setAlert }) => {
   const onSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert("Passwords do not match", "danger");
+      setAlert('Passwords do not match', 'danger');
     } else {
-      console.log("SUCCES");
+      register({ name, email, password });
     }
   };
 
@@ -41,7 +42,6 @@ const Register = ({ setAlert }) => {
             name="name"
             value={name}
             onChange={(e) => onChange(e)}
-            required
           />
         </div>
         <div className="form-group">
@@ -86,6 +86,7 @@ const Register = ({ setAlert }) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);
