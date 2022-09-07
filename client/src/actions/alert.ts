@@ -10,3 +10,4 @@ export const setAlert =
       payload: { msg, alertType, id },
     });
   };
+ 

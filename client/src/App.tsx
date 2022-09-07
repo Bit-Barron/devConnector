@@ -15,9 +15,7 @@ const App = () => {
       <Router>
         <>
           <Navbar />
-
           <section className="container">
-            {/* @ts-ignore */}
             <Alert />
             <Routes>
               <Route path="/" element={<Landing />} />

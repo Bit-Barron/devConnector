@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-const Alert = ({ alerts }) =>
+const Alert: any = ({ alerts }: any) =>
   alerts !== null &&
   alerts.length > 0 &&
   alerts.map((alert: any) => (
