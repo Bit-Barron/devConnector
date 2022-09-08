@@ -1,19 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Navigate, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
-import auth from '../../reducers/auth';
+import { Navigate, Route } from 'react-router-dom';
 
-const PrivateRoute = ({ component: Component, auth: {isAuthenticated, loading}, ...rest }: any) => (
-    // @ts-ignore
-  <Route {...rest} render={(props: any) => !isAuthenticated && !loading ? (<Navigate to="/login" />) : (<Component {...props} />)} />
+const PrivateRoute = ({
+  component: Component,
+  auth: { isAuthenticated, loading },
+  ...rest
+}: any) => (
+  <Route
+    {...rest}
+    render={(props: JSX.IntrinsicAttributes) =>
+      !isAuthenticated && !loading ? (
+        <Navigate to="/login" />
+      ) : (
+        <Component {...props} />
+      )
+    }
+  />
 );
 
 PrivateRoute.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: { auth: any }) => ({
   auth: state.auth,
 });
 
