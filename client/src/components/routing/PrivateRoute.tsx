@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Navigate, Route } from 'react-router-dom';
 
-const PrivateRoute = ({
+const PrivateRoute: typeof Route & { propTypes: any } = ({
   component: Component,
   auth: { isAuthenticated, loading },
   ...rest
@@ -12,7 +12,7 @@ const PrivateRoute = ({
     {...rest}
     render={(props: JSX.IntrinsicAttributes) =>
       !isAuthenticated && !loading ? (
-        <Navigate to="/login" />
+        <Navigate to='/login' />
       ) : (
         <Component {...props} />
       )

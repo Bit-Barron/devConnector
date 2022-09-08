@@ -29,14 +29,14 @@ const App = () => {
       <Router>
         <>
           <Navbar />
-          <section className="container">
+          <section className='container'>
             <Alert />
             <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-              {/* @ts-ignore */}
-              <PrivateRoute path="/dashboard" element={<Dashboard />} />
+              <Route path='/' element={<Landing />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+
+              <PrivateRoute path='/dashboard' element={<Dashboard />} />
             </Routes>
           </section>
         </>
