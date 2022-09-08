@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { login } from '../../actions/auth';
 
 export const Login = ({ login, isAuthenticated }: any) => {
@@ -20,34 +20,35 @@ export const Login = ({ login, isAuthenticated }: any) => {
   //Redirect if logged in
 
   if (isAuthenticated) {
+    return <Navigate to="/dashboard" />;
   }
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Login</h1>
-      <p className='lead'>
-        <i className='fas fa-user' /> Sign Into Your Account
+      <h1 className="large text-primary">Login</h1>
+      <p className="lead">
+        <i className="fas fa-user" /> Sign Into Your Account
       </p>
-      <form className='form' onSubmit={(e) => onSubmit(e)}>
-        <div className='form-group'>
+      <form className="form" onSubmit={(e) => onSubmit(e)}>
+        <div className="form-group">
           <input
-            type='email'
-            placeholder='Email Address'
-            name='email'
+            type="email"
+            placeholder="Email Address"
+            name="email"
             required
             value={email}
             onChange={(e) => onChange(e)}
           />
-          <small className='form-text'>
+          <small className="form-text">
             This site uses Gravatar so if you want a profile image, use Gravatar
             email
           </small>
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <input
-            type='password'
-            placeholder='Password'
-            name='password'
+            type="password"
+            placeholder="Password"
+            name="password"
             minLength={6}
             required
             value={password}
@@ -55,10 +56,10 @@ export const Login = ({ login, isAuthenticated }: any) => {
           />
         </div>
 
-        <input type='submit' className='btn btn-primary' value='Login' />
+        <input type="submit" className="btn btn-primary" value="Login" />
       </form>
-      <p className='my-1'>
-        Dont have an account?<Link to='/register'> Register</Link>
+      <p className="my-1">
+        Dont have an account?<Link to="/register"> Register</Link>
       </p>
     </Fragment>
   );
