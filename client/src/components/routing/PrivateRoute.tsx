@@ -4,15 +4,9 @@ import { connect } from 'react-redux';
 const PrivateRoute = ({
   component: Component,
   auth: { isAuthenticated, loading },
-  ...rest
 }: any) => {
   console.log(isAuthenticated, loading);
-  return (
-    <div>
-      test
-      <Component />
-    </div>
-  );
+  return <Component />;
 };
 
 PrivateRoute.propTypes = {
@@ -23,4 +17,4 @@ const mapStateToProps = (state: { auth: any }) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(PrivateRoute) as any;
+export default connect(mapStateToProps)(PrivateRoute);
