@@ -11,8 +11,9 @@ import {
 } from 'react-router-dom';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/profile-forms/CreateProfile';
 import PrivateRoute from './components/routing/PrivateRoute';
-
+ 
 //redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -45,6 +46,11 @@ const App = () => {
                 path='/dashboard'
                 //@ts-ignore
                 element={<PrivateRoute component={Dashboard} />}
+              />
+              <Route
+                path='/create-profile'
+                //@ts-ignore
+                element={<PrivateRoute component={CreateProfile } />}
               />
             </Routes>
           </section>

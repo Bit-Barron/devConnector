@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import {url} from '../utils/constants'
+import { url } from '../utils/constants';
 
 import { GET_PROFILE, PROFILE_ERROR } from './types';
 
@@ -20,3 +20,22 @@ export const getCurrentProfile = () => async (dispatch: any) => {
     });
   }
 };
+
+// Create or update profile
+
+export const createProfile =
+  (formData: any, history: any, edit = false) =>
+  async (dispatch: any) => {
+    try {
+      const config: object = {
+        header: { 'Content-Type': 'application/json' },
+      };
+
+      const res = await axios.post(`${url}/api/profile`, formData, config);
+
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data,
+      });
+    } catch (error) {}
+  };
