@@ -5,7 +5,6 @@ import { Navigate } from 'react-router-dom';
 const PrivateRoute = ({
   component: Component,
   auth: { isAuthenticated, loading },
-  w,
 }: any) => {
   if (!isAuthenticated && !loading) {
     <Navigate to='/login' />;
