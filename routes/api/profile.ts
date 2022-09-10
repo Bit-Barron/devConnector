@@ -21,7 +21,12 @@ router.get('/me', auth, async (req, res) => {
     }
 
     res.json(profile);
-  } catch (err) {
+  } catch (err: any) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error: any) => dispatch(setAlert(error.msg, 'danger')));
+    }
     console.log(err);
     res.status(500).send('Server Error');
   }
@@ -289,3 +294,10 @@ router.get('/github/:username', (req, res) => {
 });
 
 export default router;
+function dispatch(arg0: any) {
+  throw new Error('Function not implemented.');
+}
+
+function setAlert(msg: any, arg1: string): any {
+  throw new Error('Function not implemented.');
+}

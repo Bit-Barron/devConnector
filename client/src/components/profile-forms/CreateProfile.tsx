@@ -1,9 +1,12 @@
+/* eslint-disable import/no-anonymous-default-export */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createProfile } from '../../actions/profile';
 
-const CreateProfile = (props: any) => {
+const CreateProfile: any = ({ createProfile, history, useNavigate }: any) => {
   const [formData, setFormData] = useState({
     company: '',
     website: '',
@@ -20,6 +23,7 @@ const CreateProfile = (props: any) => {
   });
 
   const [displaySocialInputs, toggleSocialInput] = useState(false);
+  const navigate = useNavigate();
 
   const {
     company,
@@ -39,6 +43,11 @@ const CreateProfile = (props: any) => {
   const onChange = (e: any) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    createProfile(formData, history);
+  };
+
   return (
     <>
       <div>
@@ -49,7 +58,7 @@ const CreateProfile = (props: any) => {
           your profile stand out
         </p>
         <small>* = required field</small>
-        <form className='form'>
+        <form className='form' onSubmit={(e) => onSubmit(e)}>
           <div className='form-group'>
             <select name='status' value={status} onChange={(e) => onChange(e)}>
               <option value='0'>* Select Professional Status</option>
@@ -209,7 +218,7 @@ const CreateProfile = (props: any) => {
 
           <input type='submit' className='btn btn-primary my-1' />
           <a className='btn btn-light my-1' href='dashboard.html'>
-            Go Back  
+            Go Back
           </a>
         </form>
       </div>
@@ -217,6 +226,8 @@ const CreateProfile = (props: any) => {
   );
 };
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+};
 
-export default connect()(CreateProfile);
+export default connect(null, { createProfile })(navigate(CreateProfile));

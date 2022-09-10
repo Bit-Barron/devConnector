@@ -28,14 +28,30 @@ export const createProfile =
   async (dispatch: any) => {
     try {
       const config: object = {
-        header: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
       };
 
-      const res = await axios.post(`${url}/api/profile`, formData, config);
+      const res = await axios.post(`${url}api/profile`, formData, config);
 
       dispatch({
         type: GET_PROFILE,
         payload: res.data,
       });
-    } catch (error) {}
+
+      dispatch(setAlert(edit ? 'Profile Updated' : 'Profile created'));
+
+      if (!edit) {
+        return history.push('/Dashboard');
+      }
+    } catch (err: any) {
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        errors.forEach((error: any) => dispatch(setAlert(error.msg, 'danger')));
+      }
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status },
+      });
+    }
   };
