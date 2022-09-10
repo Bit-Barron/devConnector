@@ -2,9 +2,10 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { createProfile } from '../../actions/profile';
+import { createProfile, getCurrentProfile } from '../../actions/profile';
+import { useEffect } from 'react';
 
-const CreateProfile = ({ createProfile }: any) => {
+const EditProfile = ({ profile: {profile, loading}, CreateProfile, getCurrentProfile }: any) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     company: '',
@@ -22,6 +23,11 @@ const CreateProfile = ({ createProfile }: any) => {
   });
 
   const [displaySocialInputs, toggleSocialInput] = useState(false);
+
+  useEffect(() => {
+    getCurrentProfile();
+    
+  })
 
   const {
     company,
@@ -225,6 +231,12 @@ const CreateProfile = ({ createProfile }: any) => {
 
 CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 
-export default connect(null, { createProfile })(CreateProfile);
+const mapStateToProps = (state: any) => ({
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { CreateProfile })(EditProfile);

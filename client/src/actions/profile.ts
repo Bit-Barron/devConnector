@@ -38,7 +38,9 @@ export const createProfile =
         payload: res.data,
       });
 
-      dispatch(setAlert(edit ? 'Profile Updated' : 'Profile created'));
+      dispatch(
+        setAlert(edit ? 'Profile Updated' : 'Profile created', 'succes')
+      );
 
       if (!edit) {
         return navigate('/dashboard');
