@@ -1,12 +1,11 @@
-/* eslint-disable import/no-anonymous-default-export */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { createProfile } from '../../actions/profile';
 
-const CreateProfile: any = ({ createProfile, history, useNavigate }: any) => {
+const CreateProfile: any = ({ createProfile }: any) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     company: '',
     website: '',
@@ -23,7 +22,6 @@ const CreateProfile: any = ({ createProfile, history, useNavigate }: any) => {
   });
 
   const [displaySocialInputs, toggleSocialInput] = useState(false);
-  const navigate = useNavigate();
 
   const {
     company,
@@ -45,13 +43,12 @@ const CreateProfile: any = ({ createProfile, history, useNavigate }: any) => {
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    createProfile(formData, history);
+    createProfile(formData, navigate);
   };
 
   return (
     <>
       <div>
-        {' '}
         <h1 className='large text-primary'>Create Your Profile</h1>
         <p className='lead'>
           <i className='fas fa-user'></i> Let's get some information to make
@@ -230,4 +227,4 @@ CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
 };
 
-export default connect(null, { createProfile })(navigate(CreateProfile));
+export default connect(null, { createProfile })(CreateProfile);
