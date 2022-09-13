@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createProfile } from '../../actions/profile';
+import {Link} from 'react-router-dom'
 
 const CreateProfile = ({ createProfile }: any) => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const CreateProfile = ({ createProfile }: any) => {
     createProfile(formData, navigate);
   };
 
-  return (
+  return ( 
     <>
       <div>
         <h1 className='large text-primary'>Create Your Profile</h1>
@@ -214,9 +215,9 @@ const CreateProfile = ({ createProfile }: any) => {
           )}
 
           <input type='submit' className='btn btn-primary my-1' />
-          <a className='btn btn-light my-1' href='dashboard.html'>
+          <Link to='/dashboard' className='btn btn-light my-1'>
             Go Back
-          </a>
+          </Link>
         </form>
       </div>
     </>

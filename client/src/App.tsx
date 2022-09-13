@@ -3,9 +3,12 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import EditProfile from './components/profile-forms/EditProfile';
+import AddExperience from './components/profile-forms/AddExperience';
+import AddEducation from './components/profile-forms/AddEducation';
+
 import {
   BrowserRouter as Router,
-  Navigate,
   Route,
   Routes,
 } from 'react-router-dom';
@@ -13,7 +16,7 @@ import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import PrivateRoute from './components/routing/PrivateRoute';
- 
+
 //redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -50,7 +53,22 @@ const App = () => {
               <Route
                 path='/create-profile'
                 //@ts-ignore
-                element={<PrivateRoute component={CreateProfile } />}
+                element={<PrivateRoute component={CreateProfile} />}
+              />
+              <Route
+                path='/edit-profile'
+                //@ts-ignore
+                element={<PrivateRoute component={EditProfile} />}
+              />
+              <Route
+                path='/add-experience'
+                //@ts-ignore
+                element={<PrivateRoute component={AddExperience} />}
+              />
+              <Route
+                path='/add-education'
+                //@ts-ignore
+                element={<PrivateRoute component={AddEducation} />}
               />
             </Routes>
           </section>
