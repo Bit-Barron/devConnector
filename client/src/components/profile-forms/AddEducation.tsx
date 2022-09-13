@@ -7,13 +7,13 @@ import { addEducation } from '../../actions/profile';
 const AddEducation = ({ addEducation }: any) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    school: '',
-    degree: '',
-    fieldofstudy: '',
-    from: '',
-    to: '',
+    school: 'adsfdsf',
+    degree: 'adsf',
+    fieldofstudy: 'adf',
+    from: 'adsf',
+    to: 'adfsd',
     current: false,
-    description: '',
+    description: 'adsf',
   });
 
   const [toDateDisabled, toggleDisabled] = useState(false);
@@ -25,11 +25,10 @@ const AddEducation = ({ addEducation }: any) => {
   const onChange = (e: any) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const onSubmit = (e: any) => {
-      e.preventDefault();
-      addEducation(formData, navigate);
-    };
-  
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    addEducation(formData, navigate);
+  };
 
   return (
     <>
@@ -38,9 +37,7 @@ const AddEducation = ({ addEducation }: any) => {
         <i className='fas fa-code-branch'></i>Add any School or bootcamp
       </p>
       <small>* = required field</small>
-      <form
-        className='form'
-        onSubmit={(e) => onSubmit(e)} >
+      <form className='form' onSubmit={(e) => onSubmit(e)}>
         <div className='form-group'>
           <input
             type='text'
