@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -7,13 +7,13 @@ import { addEducation } from '../../actions/profile';
 const AddEducation = ({ addEducation }: any) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    school: 'adsfdsf',
-    degree: 'adsf',
-    fieldofstudy: 'adf',
-    from: 'adsf',
-    to: 'adfsd',
+    school: '',
+    degree: '',
+    fieldofstudy: '',
+    from: '',
+    to: '',
     current: false,
-    description: 'adsf',
+    description: 'delete',
   });
 
   const [toDateDisabled, toggleDisabled] = useState(false);
@@ -89,7 +89,7 @@ const AddEducation = ({ addEducation }: any) => {
                 toggleDisabled(!toDateDisabled);
               }}
             />{' '}
-            Current Job
+            Current School
           </p>
         </div>
         <div className='form-group'>

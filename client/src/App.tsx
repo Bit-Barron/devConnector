@@ -5,13 +5,10 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import EditProfile from './components/profile-forms/EditProfile';
 import AddExperience from './components/profile-forms/AddExperience';
+import Profiles from './components/profile-forms/profiles/Profiles';
 import AddEducation from './components/profile-forms/AddEducation';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile-forms/CreateProfile';
@@ -43,8 +40,8 @@ const App = () => {
             <Routes>
               <Route path='/' element={<Landing />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/profiles' element={<Profiles  />} />
               <Route path='/login' element={<Login />} />
-
               <Route
                 path='/dashboard'
                 //@ts-ignore

@@ -5,6 +5,7 @@ import { check, validationResult } from 'express-validator/check';
 
 import Profile from '../../models/Profile';
 import User from '../../models/User';
+import Post from '../../models/Post';
 import request from 'request';
 import config from 'config';
 
@@ -141,10 +142,13 @@ router.get('/user/:user_id', async (req, res) => {
 
 router.delete('/', auth, async (req, res) => {
   try {
+    // Remover user posts
+    // @ts-ignore   
+    await Post.deleteMany({ user: req.user.id });
+
     // @ts-ignore
     await Profile.findOneAndRemove({ user: req.user.id });
     // @ts-ignore
-
     await User.findOneAndRemove({ _id: req.user.id });
 
     res.json({ msg: 'user delete' });
@@ -185,18 +189,16 @@ router.put(
   }
 );
 
-router.delete('/education/:edu', auth, async (req, res) => {
+router.delete('/education/:edu_id', auth, async (req, res) => {
   try {
     // @ts-ignore
     const profile = await Profile.findOne({ user: req.user.id });
-
-    const removeIndex = profile.experience
+    const removeIndex = profile.education
       .map((item: { id: any }) => item.id)
-      // @ts-ignore
-
       .indexOf(req.params.edu_id);
+    // @ts-ignore
 
-    profile.experience.splice(removeIndex, 1);
+    profile.education.splice(removeIndex, 1);
 
     await profile.save();
 
@@ -250,12 +252,11 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
   try {
     // @ts-ignore
     const profile = await Profile.findOne({ user: req.user.id });
-
-    const removeIndex = profile.education
+    const removeIndex = profile.experience
       .map((item: { id: any }) => item.id)
       .indexOf(req.params.exp_id);
 
-    profile.education.splice(removeIndex, 1);
+    profile.experience.splice(removeIndex, 1);
 
     await profile.save();
 
