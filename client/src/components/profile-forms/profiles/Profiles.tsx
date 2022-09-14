@@ -25,7 +25,6 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }: any) => {
           <div className='profiles'>
             {profiles.length > 0 ? (
               profiles.map((profile: any) => (
-                // @ts-ignore
                 <ProfileItem key={profile._id} profile={profile} />
               ))
             ) : (

@@ -53,7 +53,7 @@ router.get('/', auth, async (req, res) => {
 });
 router.get('/:id', auth, async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const post: any = await Post.findById(req.params.id);
 
     if (!post) {
       return res.status(400).json({ msg: 'Post not found' });
@@ -154,44 +154,40 @@ router.put('/unlike/:id', auth, async (req, res) => {
 
 router.post(
   '/comment/:id',
-
   [
     auth,
     // @ts-ignore
+
     [check('text', 'Text is required').not().isEmpty()],
   ],
   async (req, res) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) {
+    if (!errors.isEmpty())
       return res.status(400).json({ errors: errors.array() });
-    }
 
     try {
       // @ts-ignore
-      const user = await User.findById(req.user.id).select('-password');
-      const post = await Post.findById(req.params.id);
 
-      const newComment = {
+      const user: any = await User.findById(req.user.id).select('-password');
+      const post: any = await Post.findById(req.params.id);
+
+      const newComment: any = {
         text: req.body.text,
-        name: user?.name,
-        avatar: user?.avatar,
-        // @ts-ignore
 
-        user: req.user?.id,
+        name: user.name,
+
+        avatar: user.avatar,
+        // @ts-ignore
+        user: req.user.id,
       };
 
-      // @ts-ignore
+      post.comments.unshift(newComment);
+      await post.save();
 
-      post?.comments.unshift(newComment);
-
-      // @ts-ignore
-
-      await newComment.save();
-
-      res.json(post);
+      res.json(post.comments);
     } catch (err) {
       console.log(err);
-      res.status(500).send('Server Error ');
+      res.status(500).send('Server error');
     }
   }
 );

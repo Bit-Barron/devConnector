@@ -8,6 +8,7 @@ export const setAlert: any =
     dispatch({
       type: SET_ALERT,
       //@ts-ignore
+
       payload: { msg, alertType, id },
     });
 

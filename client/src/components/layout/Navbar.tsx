@@ -59,8 +59,7 @@ Navbar.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 
-// @ts-ignore
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   auth: state.auth,
 });
 

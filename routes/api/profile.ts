@@ -130,9 +130,8 @@ router.get('/user/:user_id', async (req, res) => {
     }
 
     res.json(profile);
-  } catch (err) {
+  } catch (err: any) {
     console.log(err);
-    // @ts-ignore
     if (err.kid == 'ObjectId') {
       return res.status(400).json({ msg: 'Profile not found' });
     }
@@ -196,7 +195,6 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
     const removeIndex = profile.education
       .map((item: { id: any }) => item.id)
       .indexOf(req.params.edu_id);
-    // @ts-ignore
 
     profile.education.splice(removeIndex, 1);
 

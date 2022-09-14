@@ -8,6 +8,7 @@ import AddExperience from './components/profile-forms/AddExperience';
 import Profiles from './components/profile-forms/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import Posts from './components/posts/Post';
+import Post from './components/post/Post';
 import AddEducation from './components/profile-forms/AddEducation';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -42,12 +43,13 @@ const App = () => {
             <Routes>
               <Route path='/' element={<Landing />} />
               <Route path='/register' element={<Register />} />
-              <Route path='/profiles' element={<Profiles  />} />
+              <Route path='/profiles' element={<Profiles />} />
               <Route path='/login' element={<Login />} />
               <Route path='/profile/:id' element={<Profile />} />
               <Route
                 path='/dashboard'
                 //@ts-ignore
+
                 element={<PrivateRoute component={Dashboard} />}
               />
               <Route
@@ -70,10 +72,15 @@ const App = () => {
                 //@ts-ignore
                 element={<PrivateRoute component={AddEducation} />}
               />
-               <Route
+              <Route
                 path='/posts'
                 //@ts-ignore
                 element={<PrivateRoute component={Posts} />}
+              />
+              <Route
+                path='/post/:id'
+                //@ts-ignore
+                element={<PrivateRoute component={Post} />}
               />
             </Routes>
           </section>
