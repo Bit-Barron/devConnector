@@ -6,6 +6,7 @@ import Register from './components/auth/Register';
 import EditProfile from './components/profile-forms/EditProfile';
 import AddExperience from './components/profile-forms/AddExperience';
 import Profiles from './components/profile-forms/profiles/Profiles';
+import Profile from './components/profile/Profile';
 import AddEducation from './components/profile-forms/AddEducation';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -42,6 +43,7 @@ const App = () => {
               <Route path='/register' element={<Register />} />
               <Route path='/profiles' element={<Profiles  />} />
               <Route path='/login' element={<Login />} />
+              <Route path='/profile/:id' element={<Profile />} />
               <Route
                 path='/dashboard'
                 //@ts-ignore
