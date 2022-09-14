@@ -137,7 +137,7 @@ router.get('/user/:user_id', async (req, res) => {
       return res.status(400).json({ msg: 'Profile not found' });
     }
   }
-  res.status(500).send('Server error');
+  // res.status(500).send('Server error');
 });
 
 router.delete('/', auth, async (req, res) => {

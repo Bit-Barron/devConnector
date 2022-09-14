@@ -7,6 +7,7 @@ import EditProfile from './components/profile-forms/EditProfile';
 import AddExperience from './components/profile-forms/AddExperience';
 import Profiles from './components/profile-forms/profiles/Profiles';
 import Profile from './components/profile/Profile';
+import Posts from './components/posts/Post';
 import AddEducation from './components/profile-forms/AddEducation';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -68,6 +69,11 @@ const App = () => {
                 path='/add-education'
                 //@ts-ignore
                 element={<PrivateRoute component={AddEducation} />}
+              />
+               <Route
+                path='/posts'
+                //@ts-ignore
+                element={<PrivateRoute component={Posts} />}
               />
             </Routes>
           </section>
