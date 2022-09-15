@@ -12,7 +12,7 @@ const AddEducation = ({ addEducation }: any) => {
     fieldofstudy: '',
     from: '',
     to: '',
-    current: false,
+    current: false as any,
     description: 'delete',
   });
 
@@ -81,13 +81,12 @@ const AddEducation = ({ addEducation }: any) => {
               type='checkbox'
               name='current'
               checked={current}
-              //@ts-ignore
               value={current}
               onChange={(e) => {
                 setFormData({ ...formData, current: !current });
                 toggleDisabled(!toDateDisable);
               }}
-            />{' '}
+            />
             Current School
           </p>
         </div>
@@ -98,8 +97,7 @@ const AddEducation = ({ addEducation }: any) => {
             name='to'
             value={to}
             onChange={(e) => onChange(e)}
-            //@ts-ignore
-            disabled={toDateDisable ? 'disabled' : ''}
+            disabled={toDateDisable}
           />
         </div>
         <div className='form-group'>

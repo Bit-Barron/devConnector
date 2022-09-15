@@ -9,7 +9,7 @@ import Experience from './Experience';
 import Education from './Education';
 import DashboardActions from './DashboardActions';
 
-const Dashboard = ({
+const Dashboard: any = ({
   getCurrentProfile,
   auth: { user },
   profile: { profile, loading },
@@ -51,7 +51,7 @@ const Dashboard = ({
   );
 };
 
-Dashboard.propTypes = {
+Dashboard.propType = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
@@ -63,4 +63,4 @@ const mapStateToProps = (state: any) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(Dashboard) as any;

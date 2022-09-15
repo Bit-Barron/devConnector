@@ -23,7 +23,6 @@ const Post = ({ getPost, post: { post, loading }, match }: any) => {
         Back To Posts
       </Link>
       <PostItem post={post} showActions={false} />
-      {/* @ts-ignore */}
       <CommentForm postId={post._id} />
       <div className="comments">
         {post.comments.map((comment: any) => (

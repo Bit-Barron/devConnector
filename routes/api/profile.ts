@@ -9,9 +9,8 @@ import Post from '../../models/Post';
 import request from 'request';
 import config from 'config';
 
-router.get('/me', auth, async (req, res) => {
+router.get('/me', auth, async (req: any, res) => {
   try {
-    // @ts-ignore
     const profile = await Profile.findOne({ user: req.user.id }).populate(
       'user',
       ['name', 'avatar']
@@ -37,11 +36,10 @@ router.post(
   '/',
   [
     auth,
-    // @ts-ignore
     [
       check('status', 'status is required').not().isEmpty(),
       check('skills', 'Skills is required').not().isEmpty(),
-    ],
+    ]as any,
   ],
   async (req: any, res: any) => {
     const errors = validationResult(req);
@@ -139,15 +137,12 @@ router.get('/user/:user_id', async (req, res) => {
   // res.status(500).send('Server error');
 });
 
-router.delete('/', auth, async (req, res) => {
+router.delete('/', auth, async (req: any, res) => {
   try {
     // Remover user posts
-    // @ts-ignore   
     await Post.deleteMany({ user: req.user.id });
 
-    // @ts-ignore
     await Profile.findOneAndRemove({ user: req.user.id });
-    // @ts-ignore
     await User.findOneAndRemove({ _id: req.user.id });
 
     res.json({ msg: 'user delete' });
@@ -188,9 +183,8 @@ router.put(
   }
 );
 
-router.delete('/education/:edu_id', auth, async (req, res) => {
+router.delete('/education/:edu_id', auth, async (req: any, res) => {
   try {
-    // @ts-ignore
     const profile = await Profile.findOne({ user: req.user.id });
     const removeIndex = profile.education
       .map((item: { id: any }) => item.id)
@@ -246,9 +240,8 @@ router.put(
   }
 );
 
-router.delete('/experience/:exp_id', auth, async (req, res) => {
+router.delete('/experience/:exp_id', auth, async (req: any, res) => {
   try {
-    // @ts-ignore
     const profile = await Profile.findOne({ user: req.user.id });
     const removeIndex = profile.experience
       .map((item: { id: any }) => item.id)

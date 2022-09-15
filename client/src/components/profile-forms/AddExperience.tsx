@@ -82,13 +82,12 @@ const AddExperience = ({ addExperience }: any) => {
               type='checkbox'
               name='current'
               checked={current}
-              //@ts-ignore
-              value={current}
+              value={current as unknown as string}
               onChange={(e) => {
                 setFormData({ ...formData, current: !current });
                 toggleDisabled(!toDateDisabled);
               }}
-            />{' '}
+            />
             Current Job
           </p>
         </div>
@@ -99,8 +98,7 @@ const AddExperience = ({ addExperience }: any) => {
             name='to'
             value={to}
             onChange={(e) => onChange(e)}
-            //@ts-ignore
-            disabled={toDateDisabled ? 'disabled' : ''}
+            disabled={toDateDisabled}
           />
         </div>
         <div className='form-group'>

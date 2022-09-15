@@ -48,38 +48,30 @@ const App = () => {
               <Route path='/profile/:id' element={<Profile />} />
               <Route
                 path='/dashboard'
-                //@ts-ignore
-
                 element={<PrivateRoute component={Dashboard} />}
               />
               <Route
                 path='/create-profile'
-                //@ts-ignore
                 element={<PrivateRoute component={CreateProfile} />}
               />
               <Route
                 path='/edit-profile'
-                //@ts-ignore
                 element={<PrivateRoute component={EditProfile} />}
               />
               <Route
                 path='/add-experience'
-                //@ts-ignore
                 element={<PrivateRoute component={AddExperience} />}
               />
               <Route
                 path='/add-education'
-                //@ts-ignore
                 element={<PrivateRoute component={AddEducation} />}
               />
               <Route
                 path='/posts'
-                //@ts-ignore
                 element={<PrivateRoute component={Posts} />}
               />
               <Route
                 path='/post/:id'
-                //@ts-ignore
                 element={<PrivateRoute component={Post} />}
               />
             </Routes>

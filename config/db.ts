@@ -2,13 +2,12 @@ import mongoose from "mongoose";
 import config from "config";
 
 const connectDB = async () => {
-  const db = config.get("mongoURI");
+  const db: any = config.get("mongoURI");
 
   try {
-    // @ts-ignore
     mongoose.connect(db, {
       useNewUrlParser: true,
-    });
+    } as any) ;
 
     console.log("MongoDB Connected...");
   } catch (err) {

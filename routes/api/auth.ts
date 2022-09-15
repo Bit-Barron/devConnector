@@ -7,9 +7,8 @@ import jwt from "jsonwebtoken";
 import config from "config";
 import bcrypt from "bcryptjs";
 
-router.get("/", auth, async (req, res) => {
+router.get("/", auth, async (req: any, res) => {
   try {
-    // @ts-ignore
     const user = await User.findById(req.user.id).select("--password");
     res.json(user);
   } catch (err) {
